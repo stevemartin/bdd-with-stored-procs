@@ -18,10 +18,16 @@ describe 'the user report stored procedure' do
   it 'should contain the stored proc' do
     stored_proc_src("activate_defence_matrix").should == %q|
     DECLARE
+      pilot_ids integer[];
     BEGIN
     END
   |
   end
+
+  it 'should assign all the pilots to ion cannons' do
+
+  end
+
 end
 
 def arex sql

@@ -7,6 +7,7 @@
   LANGUAGE plpgsql SECURITY DEFINER
   AS $$
     DECLARE
+      pilot_ids integer[];
     BEGIN
     END
   $$;
