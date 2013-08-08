@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'the user report stored procedure' do
+describe 'the activate defence matrix stored proc' do
   before(:all) do
     @defence_matrix = File.read('db/functions/activate_defence_matrix.sql')
     @res = ActiveRecord::Base.connection.execute @defence_matrix
@@ -20,12 +20,18 @@ describe 'the user report stored procedure' do
     DECLARE
       pilot_ids integer[];
     BEGIN
+      SELECT id INTO pilot_ids FROM units WHERE type = 'cannon_pilot';
     END
   |
   end
 
-  it 'should assign all the pilots to ion cannons' do
-
+  describe "execution" do
+    before do
+      @activate_defence_matrix = 'select hq.activate_defence_matrix()'
+    end
+    it 'should assign all the pilots to ion cannons' do
+      @activate = ActiveRecord::Base.connection.execute @activate_defence_matrix
+    end
   end
 
 end

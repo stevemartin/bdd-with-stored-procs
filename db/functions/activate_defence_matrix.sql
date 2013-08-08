@@ -9,5 +9,6 @@
     DECLARE
       pilot_ids integer[];
     BEGIN
+      SELECT id INTO pilot_ids FROM units WHERE type = 'cannon_pilot';
     END
   $$;
